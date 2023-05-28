@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
-
+import { v1 as uuid } from 'uuid';
 @Injectable()
 export class BoardsService {
     private boards = [];
@@ -11,7 +11,7 @@ export class BoardsService {
 
     createBoard(title: string, description: string): Board {
         const board: Board = {
-            id: Date.now().toString(),
+            id: uuid(),
             title,
             description,
             status: BoardStatus.PUBLIC
