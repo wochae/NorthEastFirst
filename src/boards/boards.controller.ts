@@ -25,11 +25,18 @@ export class BoardsController {
     //     좌항 우항에 있는 boardsService는 서로 다른 객체이다. 
     // */
 
+    
     // @Post()
     // @UsePipes(ValidationPipe)
     // createBoard(@Body() createBoardDto :CreateBoardDto): Board {
     //     return this.boardsService.createBoard(createBoardDto);
     // }
+    
+    @Post()
+    @UsePipes(ValidationPipe)
+    createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+        return this.boardsService.createBoard(createBoardDto);
+    }
 
     @Get('/:id')
     getBoardById(@Param('id') id: number): Promise<Board> {
