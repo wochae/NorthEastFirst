@@ -6,7 +6,7 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe'
 
 @Controller('boards')
 export class BoardsController {
-    constructor(private readonly boardsService: BoardsService) { }
+    constructor(private boardsService: BoardsService) { }
 
     /*
         boardsService: BoardsService;
