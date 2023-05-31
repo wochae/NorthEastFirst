@@ -9,7 +9,7 @@ import { Board } from './board.entity';
 export class BoardsService {
     //Inject Repository to Service
     constructor(
-        @InjectRepository(BoardRepository)
+        @InjectRepository(Board)
         private boardRepository: BoardRepository,
     ) {}
 
@@ -17,17 +17,8 @@ export class BoardsService {
     //     return this.boards;
     // }
 
-    async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
-        const { title, description } = createBoardDto;
-
-        const board = this.boardRepository.create({
-            title,
-            description,
-            status: BoardStatus.PUBLIC
-        })
-
-        await this.boardRepository.save(board);
-        return board
+    createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+        return this.boardRepository.createBoard(createBoardDto);
     }
 
     // createBoard(createBoardDto: CreateBoardDto) {
