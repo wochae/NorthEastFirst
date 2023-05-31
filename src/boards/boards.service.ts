@@ -12,6 +12,10 @@ export class BoardsService {
         private boardRepository: BoardRepository,
     ) {}
 
+    getAllTask(): Promise<Board[]> {
+        return this.boardRepository.find();
+    }
+
     // getAllBoards(): Board[] {
     //     return this.boards;
     // }

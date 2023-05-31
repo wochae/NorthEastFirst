@@ -17,6 +17,11 @@ export class BoardsController {
         }
     
     */
+
+    @Get()
+    getBoards(): Promise<Board[]> {
+        return this.boardsService.getAllTask();
+    }
     // @Get('/')
     // getBoards(): Board[] {
     //     return this.boardsService.getAllBoards();
