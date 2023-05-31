@@ -6,7 +6,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class BoardRepository extends Repository<Board> {
-    constructor(dataSource: DataSource) {
+    constructor(private dataSource: DataSource) {
         super(Board, dataSource.createEntityManager());
     }
     async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
