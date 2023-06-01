@@ -11,6 +11,7 @@ export class AuthCredentialsDto {
     @MaxLength(20)
 
     // 정규표현식
-    @Matches(/^[a-zA-Z0-9]*$/)
+    @Matches(/^[a-zA-Z0-9]*$/, { message: 'password only accepts english and number'
+    })
     password: string;
 }
