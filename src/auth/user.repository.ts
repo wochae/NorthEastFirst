@@ -6,6 +6,7 @@ import { AuthCredentialsDto } from "./dto/auth-credential.dto";
 @Injectable()
 export class UserRepository extends Repository<User> {
     constructor(private dataSource: DataSource) {
+        const userRepository = dataSource.getRepository(User);
         super(User, dataSource.createEntityManager());
     }
     async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
@@ -19,7 +20,7 @@ export class UserRepository extends Repository<User> {
         try {
             await this.save(user);
         } catch(error) {
-            if (error.code === 23505) {
+            if (error.code === '23505') {
                 throw new ConflictException('Username already exists');
             } else {
                 throw new InternalServerErrorException();
