@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { ConflictException, Injectable, InternalServerErrorException } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
 import { User } from "./user.entity";
 import { AuthCredentialsDto } from "./dto/auth-credential.dto";
@@ -16,6 +16,15 @@ export class UserRepository extends Repository<User> {
             password,
         });
 
-        await this.save(user);
+        try {
+            await this.save(user);
+        } catch(error) {
+            if (error.code === 23505) {
+                console.log(error.code);
+            } else {
+                throw new InternalServerErrorException();
+            }
+        }
+        
     }
 }
