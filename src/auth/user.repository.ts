@@ -7,17 +7,16 @@ import * as bcrypt from "bcryptjs";
 @Injectable()
 export class UserRepository extends Repository<User> {
     constructor(private dataSource: DataSource) {
-        const userRepository = dataSource.getRepository(User);
-
         super(User, dataSource.createEntityManager());
     }
     async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
         const { username, password } = authCredentialsDto;
 
         const salt = await bcrypt.genSalt();
-        const hasedPassword = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        const user = this.create({ username, password: hasedPassword })
+        const user = this.create({ username, password: hashedPassword });
+        
 
         try {
             await this.save(user);

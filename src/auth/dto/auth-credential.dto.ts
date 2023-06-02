@@ -1,7 +1,4 @@
-import { IsString, Matches, MaxLength, MinLength } from "class-validator";
-import { User } from "../user.entity";
-import { Unique } from "typeorm";
-
+import { IsString, Matches, MaxLength, MinLength, Validate } from "class-validator";
 export class AuthCredentialsDto {
     @IsString()
     @MinLength(4)

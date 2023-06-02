@@ -13,10 +13,11 @@ import { JwtStrategy } from './jwt.strategy';
     JwtModule.register({
       secret: 'Secret1234',
       signOptions: {
-        expiresIn: 60 * 60,
+        expiresIn: 3600
       }
     }),
-    TypeOrmModule.forFeature([UserRepository])],
+    TypeOrmModule.forFeature([UserRepository])
+  ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
   exports: [JwtStrategy, PassportModule]
