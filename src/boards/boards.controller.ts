@@ -29,7 +29,7 @@ private logger = new Logger('BoardController');
         @GetUser() user: User,
     ): Promise<Board[]> {
         this.logger.verbose(`User ${user.username} trying to get all boards`);
-        return this.boardsService.getAllBoards(user);
+        return this.boardsService.getAllBoards(user);        
     }
     // @Get('/')
     // getBoards(): Board[] {
@@ -52,6 +52,8 @@ private logger = new Logger('BoardController');
         @Body() createBoardDto: CreateBoardDto,
         @GetUser() user:User,
         ): Promise<Board> {
+        this.logger.verbose(`User "${user.username}" creating a new board.
+        Payload: ${JSON.stringify(createBoardDto)}`)
         return this.boardsService.createBoard(createBoardDto, user);
     }
 
