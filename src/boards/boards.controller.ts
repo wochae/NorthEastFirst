@@ -23,8 +23,10 @@ export class BoardsController {
     */
 
     @Get()
-    getBoards(): Promise<Board[]> {
-        return this.boardsService.getAllTask();
+    getAllBoards(
+        @GetUser() user: User,
+    ): Promise<Board[]> {
+        return this.boardsService.getAllBoards(user);        
     }
     // @Get('/')
     // getBoards(): Board[] {
