@@ -6,13 +6,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeORMConfig } from './configs/typeorm.config';
 import { AuthModule } from './auth/auth.module';
 import { GatewayModule } from './gateway/gateway.module';
+import { SocketModule } from './socket/socket.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeORMConfig),
     BoardsModule,
     AuthModule,
-    GatewayModule
+    GatewayModule,
+    SocketModule,
   ],
 })
 export class AppModule {}
