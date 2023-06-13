@@ -8,15 +8,11 @@ import { AuthModule } from './auth/auth.module';
 import { GatewayModule } from './gateway/gateway.module';
 import { SocketModule } from './socket/socket.module';
 import { WebsocketsModule } from './websockets/websockets.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(typeORMConfig),
-    BoardsModule,
-    AuthModule,
-    GatewayModule,
-    SocketModule,
-    WebsocketsModule,
-  ],
+  imports: [EventsModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
