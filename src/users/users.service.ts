@@ -12,6 +12,10 @@ export class UsersService {
         private usersRepository: UsersRepository,
     )  {}
 
+    getAllUsers(): Promise<User[]> {
+        return this.usersRepository.getAllUsers();
+    }
+
     createUser(signInDto: SignInDto): Promise<User> {
         return this.usersRepository.createUser(signInDto);
     }
