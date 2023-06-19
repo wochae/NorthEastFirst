@@ -3,16 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeORMConfig } from './configs/typeorm.config';
-import { EventsModule } from './events/events.module';
 import { UsersModule } from './users/users.module';
 import { RoomModule } from './room/room.module';
+import { GatewayModule } from './gateway/gateway.module';
 
 @Module({
   imports: [
-    EventsModule, 
     UsersModule,
     TypeOrmModule.forRoot(typeORMConfig),
-    RoomModule],
+    RoomModule,
+    GatewayModule],
   controllers: [AppController],
   providers: [AppService],
 })
