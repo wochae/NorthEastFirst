@@ -4,5 +4,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Room extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
+    
+    @Column()
     roomName: string;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
 import { Room } from "./room.entity";
+import { CreateRoomDto } from "./dto/create-room.dto";
 
 @Injectable()
 export class RoomRepository extends Repository<Room> {
@@ -12,5 +13,12 @@ export class RoomRepository extends Repository<Room> {
         return await this.find();
     }
 
-    // async createRoom()
+    async createRoom(dto: CreateRoomDto): Promise<Room> {
+        const { roomName } = dto;
+        const room = this.create({
+            roomName
+        });
+        await this.save(room);
+        return room;
+    }
 }
