@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
 import { Room } from "./room.entity";
-import { CreateRoomDto } from "./dto/create-room.dto";
+import { CreateRoomDto } from "./dto/room.dto";
 
 @Injectable()
 export class RoomRepository extends Repository<Room> {

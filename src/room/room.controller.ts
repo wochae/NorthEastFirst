@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { RoomService } from './room.service';
-import { CreateRoomDto } from './dto/create-room.dto';
+import { CreateRoomDto } from './dto/room.dto';
 import { Room } from './room.entity';
 
 @Controller('room')

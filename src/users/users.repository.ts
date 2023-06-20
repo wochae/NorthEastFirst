@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { User } from "./user.entity";
-import { SignInDto } from "./dto/create-user.dto";
+import { SignInDto } from "./dto/user.dto";
 import { DataSource, Repository } from "typeorm";
 
 @Injectable()
