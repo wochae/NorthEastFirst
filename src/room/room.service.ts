@@ -1,7 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { RoomRepository } from './room.repository';
 import { Room, RoomParticipant } from './room.entity';
-import { InjectRepository } from '@nestjs/typeorm';
 import { CreateRoomDto } from './dto/room.dto';
 import { JoinRoomDto } from './dto/room.dto';
 import { Socket } from 'socket.io';

@@ -16,7 +16,7 @@ export const databaseProviders = [
                 database: process.env.RDS_DB_NAME || dbConfig.database,
                 // Entities to be loaded for this connection.
                 entities: [__dirname + '/../**/*.entity.{js,ts}'],
-                synchronize: dbConfig.synchronize
+                synchronize: false /* dbConfig.synchronize */
             });
             return dataSource.initialize();
         },
