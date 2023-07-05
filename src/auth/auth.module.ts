@@ -1,14 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
+import { HttpModule } from '@nestjs/axios'
 import { AuthService } from './auth.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserRepository } from './user.repository';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import * as config from 'config';
+import { DatabaseModule } from 'src/database/database.module';
+import { UsersModule } from 'src/users/users.module';
+import { UserService } from 'src/users/users.service';
+import { usersProviders } from 'src/users/users.providers';
 @Module({
   imports: [
+    UsersModule,
+    HttpModule,
+    DatabaseModule,
     PassportModule.register({defaultStrategy: 'jwt'}),
     JwtModule.register({
       secret: config.get('jwt.secret'),
@@ -16,10 +22,9 @@ import * as config from 'config';
         expiresIn: config.get('jwt.expiresIn')
       }
     }),
-    TypeOrmModule.forFeature([UserRepository])
-  ],
+  ], 
+  providers: [AuthService, UserService, ...usersProviders, JwtStrategy, JwtModule],
   controllers: [AuthController],
-  providers: [AuthService, UserRepository, JwtStrategy],
-  exports: [JwtStrategy, PassportModule]
+  exports: [JwtModule]
 })
 export class AuthModule {}
